@@ -20,6 +20,7 @@ const products = [
         price: 100,
         img: bookshelf,
         inCart: false,
+        amount:0,
     },
     {
         id:2,
@@ -27,6 +28,7 @@ const products = [
         price: 120,
         img: chandelier,
         inCart: false,
+        amount:0,
     },
     {
         id:3,
@@ -34,6 +36,7 @@ const products = [
         price: 300,
         img: couchWithPillows,
         inCart: false,
+        amount:0,
     },
     {
         id:4,
@@ -41,6 +44,7 @@ const products = [
         price: 80,
         img: darkChair,
         inCart: false,
+        amount:0,
     },
     {
         id:5,
@@ -48,6 +52,7 @@ const products = [
         price: 330,
         img: darkCouch,
         inCart: false,
+        amount:0,
     },
     {
         id:6,
@@ -55,6 +60,7 @@ const products = [
         price: 110,
         img: modernChair,
         inCart: false,
+        amount:0,
     },
     {
         id:7,
@@ -62,6 +68,7 @@ const products = [
         price: 60,
         img: pillows,
         inCart: false,
+        amount:0,
     },
     {
         id:8,
@@ -69,6 +76,7 @@ const products = [
         price: 260,
         img: smallCouch,
         inCart: false,
+        amount:0,
     },
     {
         id:9,
@@ -76,6 +84,7 @@ const products = [
         price: 400,
         img: spaciousCouch,
         inCart: false,
+        amount:0,
     },
     {
         id:10,
@@ -83,6 +92,7 @@ const products = [
         price: 500,
         img: wardrobe,
         inCart: false,
+        amount:0,
     },
     {
         id:11,
@@ -90,6 +100,7 @@ const products = [
         price: 70,
         img: lamp,
         inCart: false,
+        amount:0,
     },
     {
         id:12,
@@ -97,6 +108,7 @@ const products = [
         price: 45,
         img: frame,
         inCart: false,
+        amount:0,
     },
 ]
 
