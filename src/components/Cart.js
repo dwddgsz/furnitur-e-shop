@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import photo from '../images/couch-with-pillows.jpg'
+import photo from '../images/couch-with-pillows.jpg';
+import {connect} from 'react-redux';
+import {increase,decrease} from '../actions'
+
 
 const CartWrapper = styled.article`
 max-width:1200px;
@@ -13,6 +16,14 @@ margin:0 auto;
 }
 .cart-content {
     text-align:center;
+}
+.empty-cart {
+    padding:40px 0;
+    font-size:2rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-align:center;
+    list-style:none;
 }
 .cart-product {
     width:350px;
@@ -95,61 +106,72 @@ padding: 0 5px;
     }
 }
 `
-const Cart = () => {
+const Cart = ({products,totalValue,increase,decrease}) => {
+
+    const inCartProducts = products.filter((product)=>{
+        if (product.inCart) {
+            return product;
+        }
+    })
+
+    const renderContent = () => {
+        if (inCartProducts.length ===0) {
+            return <li className="empty-cart">your cart is empty</li>
+        } else {
+            return (
+                <React.Fragment>
+            <ul class="cart-content">
+            {renderCartProducts()}
+        </ul>
+        <div className="cart-payment">
+        <p className="total-value-container">Total:<span className="total-value">{totalValue}</span>$</p>
+            <form className="terms-form">
+                <input id="terms" type="checkbox"></input>
+                <label className="terms-label" for="terms">Accept <a>policy terms</a></label>
+            </form>
+        </div>
+         </React.Fragment>
+        )
+        }
+    }
+
+    const renderCartProducts = () => {
+        return inCartProducts.map((product)=>{
+            if (product.amount === 0) {
+                return null;
+            }
+            return (
+                <li className="cart-product">
+                    <div className="cart-img-container">
+                        <img className="cart-img" src={product.img} alt="ds"></img>
+                    </div>
+                    <h4 className="cart-title">{product.name}</h4>
+                    <p className="cart-value-container"><span className="cart-value">{product.price}</span>$</p>
+                    <div className="cart-amount-container">
+                        <button onClick={()=>{decrease(product)}}><span className="fas fa-minus"></span></button>
+            <span className="cart-amount">{product.amount}</span>
+                        <button onClick={()=>{increase(product)}}><span className="fas fa-plus"></span></button>
+                    </div>
+                </li>
+            )
+        })
+    }
+
     return (
+
         <CartWrapper>
             <h2 className="cart-heading">Cart</h2>
-            <ul class="cart-content">
-
-                <li className="cart-product">
-                    <div className="cart-img-container">
-                        <img className="cart-img" src={photo} alt="ds"></img>
-                    </div>
-                    <h4 className="cart-title">title</h4>
-                    <p className="cart-value-container"><span className="cart-value">32</span>$</p>
-                    <div className="cart-amount-container">
-                        <button><span className="fas fa-minus"></span></button>
-                        <span className="cart-amount">1</span>
-                        <button><span className="fas fa-plus"></span></button>
-                    </div>
-                </li>
-
-                <li className="cart-product">
-                    <div className="cart-img-container">
-                        <img className="cart-img" src={photo} alt="ds"></img>
-                    </div>
-                    <h4 className="cart-title">title</h4>
-                    <p className="cart-value-container"><span className="cart-value">32</span>$</p>
-                    <div className="cart-amount-container">
-                        <button><span className="fas fa-minus"></span></button>
-                        <span className="cart-amount">1</span>
-                        <button><span className="fas fa-plus"></span></button>
-                    </div>
-                </li>
-
-                <li className="cart-product">
-                    <div className="cart-img-container">
-                        <img className="cart-img" src={photo} alt="ds"></img>
-                    </div>
-                    <h4 className="cart-title">title</h4>
-                    <p className="cart-value-container"><span className="cart-value">32</span>$</p>
-                    <div className="cart-amount-container">
-                        <button><span className="fas fa-minus"></span></button>
-                        <span className="cart-amount">1</span>
-                        <button><span className="fas fa-plus"></span></button>
-                    </div>
-                </li>
-            </ul>
-            <div className="cart-payment">
-                <p className="total-value-container">Total:<span className="total-value">323</span>$</p>
-                <form className="terms-form">
-                    <input id="terms" type="checkbox"></input>
-                    <label className="terms-label" for="terms">Accept <a>policy terms</a></label>
-                </form>
-            </div>
-
+            {renderContent()}
         </CartWrapper>
     )
 }
 
-export default Cart;
+const mapStateToProps = (state) => {
+    return {
+        products: state.cart.products,
+        totalValue: state.cart.totalValue,
+    }
+}
+
+
+export default connect(mapStateToProps,{increase,decrease})(Cart);

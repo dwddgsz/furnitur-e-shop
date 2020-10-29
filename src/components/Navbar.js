@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-
+import {connect} from 'react-redux';
 
 const NavigationWrapper = styled.nav`
 background-color: var(--white);
@@ -49,7 +49,7 @@ h1 {
 }       
 `
 
-const Navbar = () => {
+const Navbar = ({totalAmount}) => {
     return (
             <NavigationWrapper>
                 <div className="nav-container">
@@ -57,7 +57,7 @@ const Navbar = () => {
                 <Link to="/cart">
                     <button className="nav-cart-button">
                         <span className="fas fa-shopping-bag nav-cart-icon"></span>
-                        <span className="nav-cart-amount">3</span>
+                            <span className="nav-cart-amount">{totalAmount}</span>
                         </button>
                 </Link>
                 </div>
@@ -65,4 +65,11 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+
+const mapStateToProps = (state) => {
+    return {
+        totalAmount: state.cart.totalAmount
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);

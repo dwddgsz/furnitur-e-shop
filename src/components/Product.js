@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {addProduct} from '../actions';
 
 const ProductWrapper = styled.li`
 width:260px;
@@ -43,14 +45,17 @@ p {
 }
 
 `
-export const Product = ({product}) => {
+export const Product = ({product,addProduct}) => {
+
     const {id,name,price,img,inCart} = product;
     const inCartRender = () => {
-        if(inCart === true) {
+        if(inCart) {
             return <button className="product-button" disabled>In cart</button>
         }
         else {
-            return <button className="product-button">Add to cart</button>
+            return <button className="product-button" onClick={()=>{
+                addProduct(product);
+            }}>Add to cart</button>
         }
     }
     return (
@@ -68,4 +73,4 @@ export const Product = ({product}) => {
 }
 
 
-export default Product;
+export default connect(null,{addProduct})(Product);

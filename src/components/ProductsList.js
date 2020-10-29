@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import products from '../data/products';
 import Product from './Product';
+import {connect } from 'react-redux';
 
 const ProductsListWrapper = styled.article`
 max-width:1200px;
@@ -19,7 +19,9 @@ margin:0 auto;
 `
 
 
-export const ProductsList = () => {
+export const ProductsList = ({products}) => {
+
+
     const renderProducts = () => {
         return products.map((product)=> {
             return <Product key={product.id} product={product} />
@@ -35,4 +37,10 @@ export const ProductsList = () => {
     )
 }
 
-export default ProductsList;
+const mapStateToProps = (state) => {
+    return {
+        products: state.cart.products,
+    }
+}
+
+export default connect(mapStateToProps)(ProductsList);
