@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import {connect} from 'react-redux';
-import {increase,decrease} from '../actions'
+import {increase,decrease} from '../actions';
+import PayPalButton from './PayPalButton';
 
 
 const CartWrapper = styled.article`
 max-width:1200px;
 margin:0 auto;
+padding-bottom:40px;
 .cart-heading {
     padding:50px 0;
     font-size:2.6rem;
@@ -25,12 +27,12 @@ margin:0 auto;
     list-style:none;
 }
 .cart-product {
-    width:350px;
-    margin:0 auto 40px;;
-    &:not(:last-child) {
-        padding-bottom:20px;
-        border-bottom:1px solid var(--dark);
-    }
+    width:300px;
+    margin:0 auto 40px;
+    padding:20px 0;
+    border-bottom:1px solid var(--dark);
+
+
     @media screen and (min-width:992px){
         width:900px;
         display:flex;
@@ -43,7 +45,11 @@ margin:0 auto;
 
 }
 .cart-img-container {
-width:350px;
+margin:0 auto;
+width:280px;
+@media screen and (min-width:992px){
+        margin:0;
+}
 }
 .cart-img {
     width:100%;
@@ -87,22 +93,29 @@ font-size:2rem;
 text-align:center;
 }
 .total-value-container {
-font-size:2.2rem;
+font-size:2.6rem;
 margin-bottom:1rem;
 }
 .total-value {
 padding: 0 5px;
 }
-.terms-form{
 
+.form {
+    width:260px;
+    margin:0 auto;
+    display:flex;
+    flex-direction: column;
+}
+.terms-container {
+    margin:25px 0 35px;
 }
 .terms-label {
-    margin-left:1rem;
+    margin: 20px 5px;
     font-size:2rem;
-    a {
-        color: blue;
-        cursor:pointer;
-    }
+}
+
+a {
+    font-size:1.8rem;
 }
 `
 const Cart = ({products,totalValue,increase,decrease}) => {
@@ -124,9 +137,12 @@ const Cart = ({products,totalValue,increase,decrease}) => {
         </ul>
         <div className="cart-payment">
         <p className="total-value-container">Total:<span className="total-value">{totalValue}</span>$</p>
-            <form className="terms-form">
+            <form className="form">
+                <div className="terms-container">
                 <input id="terms" type="checkbox"></input>
-                <label className="terms-label" for="terms">Accept <a>policy terms</a></label>
+                <label className="terms-label" htmlFor="terms">Accept</label><a href="#">policy terms</a>
+                </div>
+                <PayPalButton/>
             </form>
         </div>
          </React.Fragment>
