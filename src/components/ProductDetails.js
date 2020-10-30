@@ -16,7 +16,7 @@ h2 {
     text-transform:capitalize;
 }
 .details {
-    margin:0 15px;
+    margin:40px 15px 0;
     @media screen and (min-width:992px) {
         display:flex;
         align-items:center;
