@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import photo from '../images/couch-with-pillows.jpg';
 import {connect} from 'react-redux';
 import {increase,decrease} from '../actions'
 
