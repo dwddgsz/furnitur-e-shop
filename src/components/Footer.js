@@ -18,22 +18,24 @@ color: (--white);
     @media screen and (min-width:1200px){
         justify-content:space-between;
     }
-    ul {
+    .footer-list {
         text-align:center;
         color: var(--white);
         text-transform:uppercase;
         padding-bottom:30px;
         @media screen and (min-width:900px){
         text-align:left;
+        padding-bottom:0;
     }
-        .list-title {
+        .footer-list-title {
             font-size:1.7rem;
+            padding-bottom:8px;
             cursor:auto;
             &:hover {
                 opacity:1;
             }
         }
-        li {
+        .footer-list-item {
             padding:5px 0;
             cursor:pointer;
             transition: .3s opacity;
@@ -42,8 +44,8 @@ color: (--white);
             }
         }
     }
-    .newletter {
-        h3 {
+    .newsletter {
+        .newsletter-title {
             color:var(--white);
             text-align:center;
             font-size:2.4rem;
@@ -51,7 +53,7 @@ color: (--white);
             text-transform:uppercase;
             padding-bottom:40px;
         }
-        input {
+        .newsletter-input {
             background-color:transparent;
             border:none;
             border-bottom:1px solid var(--white);
@@ -61,7 +63,7 @@ color: (--white);
                 background-color: rgba(255,255,255,.3);
             }
         }
-            button {
+            .newsletter-button {
                 margin-left:10px;
                 padding:8px 20px;
                 background-color: var(--white);
@@ -83,27 +85,27 @@ export const Footer = () => {
     return (
         <FooterWrapper>
             <div className="footer-content">
-                <ul>
-                    <li className="list-title">client</li>
-                    <li>contact</li>
-                    <li>FAQ</li>
-                    <li>shipping and delivery</li>
-                    <li>returns</li>
+                <ul className="footer-list">
+                    <li className="footer-list-title">client</li>
+                    <li className="footer-list-item">contact</li>
+                    <li className="footer-list-item">FAQ</li>
+                    <li className="footer-list-item">shipping and delivery</li>
+                    <li className="footer-list-item">returns</li>
                 </ul>
 
-                <ul>
-                    <li className="list-title">social media</li>
-                    <li>facebook</li>
-                    <li>instagram</li>
-                    <li>twitter</li>
-                    <li>pinterest</li>
+                <ul className="footer-list">
+                    <li className="footer-list-title">social media</li>
+                    <li className="footer-list-item">facebook</li>
+                    <li className="footer-list-item">instagram</li>
+                    <li className="footer-list-item">twitter</li>
+                    <li className="footer-list-item">pinterest</li>
                 </ul>
                 
-                <section className="newletter">
-                    <form>
-                        <h3>newsletter</h3>
-                        <input></input>
-                        <button onClick={(e)=>e.preventDefault()}>sign up</button>
+                <section className="newsletter">
+                    <form className="newsletter-form">
+                        <h3 className="newsletter-title">newsletter</h3>
+                        <input className="newsletter-input"></input>
+                        <button className="newsletter-button" onClick={(e)=>e.preventDefault()}>sign up</button>
                     </form>
                 </section>
 
