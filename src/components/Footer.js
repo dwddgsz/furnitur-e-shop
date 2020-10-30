@@ -28,6 +28,10 @@ color: (--white);
     }
         .list-title {
             font-size:1.7rem;
+            cursor:auto;
+            &:hover {
+                opacity:1;
+            }
         }
         li {
             padding:5px 0;
