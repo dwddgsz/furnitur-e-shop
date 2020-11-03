@@ -37,8 +37,7 @@ h1 {
     padding: 8px 20px;
     font-size:2rem;
     font-weight:400;
-    text-transform:uppercase;
-    background-color: var(--dark);
+        background-color: var(--dark);
     color: var(--white);
     transition: .3s opacity;
     cursor:pointer;
@@ -53,7 +52,7 @@ const Navbar = ({totalAmount}) => {
     return (
             <NavigationWrapper>
                 <div className="nav-container">
-                <Link to="/"><h1>Logo</h1></Link>
+                <Link to="/"><h1>furnitur-e-shop</h1></Link>
                 <Link to="/cart">
                     <button className="nav-cart-button">
                         <span className="fas fa-shopping-bag nav-cart-icon"></span>
