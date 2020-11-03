@@ -1,2 +1,2 @@
 # furnitur-e-shop
-![](designs/furniture.png)
+<img src="designs/furniture.png" width=200 >
