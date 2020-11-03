@@ -25,7 +25,7 @@
 -shopping bag icon carries user to cart
 
 
--shopping bag icon has counter with current amount of items located in cart
+-shopping bag icon has counter with amount of items currently located in cart
 
 
 ### home page: 
@@ -35,7 +35,7 @@
 -product image carries user to details page
 
 
--after clicking 'Add to cart' button, product will be added to cart, and button will change its text to 'In cart'
+-after clicking on 'Add to cart' button, product will be added to cart, and button will change its text to 'In cart'
 
 
 ### details page
