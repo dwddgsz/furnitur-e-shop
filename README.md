@@ -1,7 +1,7 @@
 # furnitur-e-shop
 
 
-[live](https://optimistic-easley-4c7dd7.netlify.app)
+[live](https://furnitur-e-shop.netlify.app)
 
 
 ## Views:
